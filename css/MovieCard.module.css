@@ -1,0 +1,19 @@
+.card{
+    /* padding: 1vmin; */
+    margin: 0.7vmax;
+    background-color: white;
+    height: min-content;
+    width: 10vmax;
+    border-radius: 1vmin;
+    
+}
+.card img{
+    transition: all .2s ease-in-out;
+    border-radius: 0.5vmin;
+    height: 30vh;
+
+}
+/* .card :hover{
+    cursor: pointer;
+    transform: scale(1.1);
+} */

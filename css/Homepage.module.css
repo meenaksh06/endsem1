@@ -1,0 +1,16 @@
+.home{
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+.bodyContainer{
+    margin-top: 1vmax;
+    width: 90%;
+}
+.navbarContainer{
+  width: 10%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+}

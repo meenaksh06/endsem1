@@ -1,0 +1,11 @@
+.loading{
+    text-align: center;
+    position: fixed;
+    top: 10vh;
+    left: 40%;
+    color: white;
+    font-size: 2vmax;
+    padding: 0.7vmin 0.9vmin;
+}
+
+

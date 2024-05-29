@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "3a87fc0a-5a6b-4f0a-9377-99f5aa6acd2f",
+		"name": "NST OTT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12908063"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token); ",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MmEzNjA1ZDExMmIwZmM0M2U2ZjM3YyIsImlhdCI6MTcxNDA0MjM3MywiZXhwIjoxNzQ1NTc4MzczfQ.F6BNHlPoV_8Cp7YtoSpG0aScWO5D5LnuPnYIudAmd5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "projectId",
+								"value": "{{projectId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"test@user1.com\",\n    \"password\" : \"test@user1.com\",\n    \"appType\" : \"ott\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://academics.newtonschool.co/api/v1/user/login",
+							"protocol": "https",
+							"host": [
+								"academics",
+								"newtonschool",
+								"co"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						},
+						"description": "login route accepts { email , password }"
+					},
+					"response": []
+				},
+				{
+					"name": "signup Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token); ",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "projectId",
+								"value": "{{projectId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User1\",\n    \"email\" : \"test@user1.com\",\n    \"password\" : \"test@user1.com\",\n    \"appType\" : \"ott\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://academics.newtonschool.co/api/v1/user/signup",
+							"protocol": "https",
+							"host": [
+								"academics",
+								"newtonschool",
+								"co"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"signup"
+							]
+						},
+						"description": "signup route accepts { name , email , password }"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "shows",
+			"item": [
+				{
+					"name": "Get single show details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "projectId",
+								"value": "{{projectId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://academics.newtonschool.co/api/v1/ottx/show/{{showId}}",
+							"protocol": "https",
+							"host": [
+								"academics",
+								"newtonschool",
+								"co"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ottx",
+								"show",
+								"{{showId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get show list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "projectId",
+								"value": "{{projectId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://academics.newtonschool.co/api/v1/ottx/show",
+							"protocol": "https",
+							"host": [
+								"academics",
+								"newtonschool",
+								"co"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ottx",
+								"show"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "search shows",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "projectId",
+										"value": "9fc41adjs85k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://academics.newtonschool.co/api/v1/ottx/show?search={\"title\":\"heart\"}",
+									"protocol": "https",
+									"host": [
+										"academics",
+										"newtonschool",
+										"co"
+									],
+									"path": [
+										"api",
+										"v1",
+										"ottx",
+										"show"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "{\"title\":\"heart\"}"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "filter show",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "projectId",
+										"value": "{{projectId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://academics.newtonschool.co/api/v1/ottx/show?filter={\"type\": \"web series\"}",
+									"protocol": "https",
+									"host": [
+										"academics",
+										"newtonschool",
+										"co"
+									],
+									"path": [
+										"api",
+										"v1",
+										"ottx",
+										"show"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "{\"type\": \"web series\"}"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "paginated list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "projectId",
+										"value": "{{projectId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://academics.newtonschool.co/api/v1/ottx/show?limit=30&page=2",
+									"protocol": "https",
+									"host": [
+										"academics",
+										"newtonschool",
+										"co"
+									],
+									"path": [
+										"api",
+										"v1",
+										"ottx",
+										"show"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "30"
+										},
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get Categories list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "projectId",
+						"value": "{{projectId}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://academics.newtonschool.co/api/v1/ottx/categories",
+					"protocol": "https",
+					"host": [
+						"academics",
+						"newtonschool",
+						"co"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ottx",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
